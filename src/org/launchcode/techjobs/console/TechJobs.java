@@ -21,6 +21,7 @@ public class TechJobs {
         columnChoices.put("position type", "Position Type");
         columnChoices.put("all", "All");
 
+
         // Top-level menu options
         HashMap<String, String> actionChoices = new HashMap<>();
         actionChoices.put("search", "Search");
@@ -28,12 +29,20 @@ public class TechJobs {
 
         System.out.println("Welcome to LaunchCode's TechJobs App!");
 
-        // Allow the user to search until they manually quit
+//         Allow the user to search until they manually quit
+        if (columnChoices.equals("Debug")) {
+            debugMethod(String.valueOf(columnChoices));
+        }
+
         while (true) {
 
             String actionChoice = getUserSelection("View jobs by:", actionChoices);
 
+
+
+
             if (actionChoice.equals("list")) {
+
 
                 String columnChoice = getUserSelection("List", columnChoices);
 
@@ -61,6 +70,7 @@ public class TechJobs {
                 String searchTerm = in.nextLine();
 
                 if (searchField.equals("all")) {
+
                     System.out.println("Search all fields not yet implemented.");
                 } else {
                     printJobs(JobData.findByColumnAndValue(searchField, searchTerm));
@@ -110,7 +120,27 @@ public class TechJobs {
 
     // Print a list of jobs
     private static void printJobs(ArrayList<HashMap<String, String>> someJobs) {
+        if (someJobs.size() < 1){
+            System.out.println("* - · - * Jobs Not Found * - · - *");
+        }
+        else {
+            String border = "* - · - * - · - * - · - * - · - *";
 
-        System.out.println("printJobs is not implemented yet");
+            for (HashMap<String, String> job : someJobs){
+                System.out.println(border);
+
+                for (String key : job.keySet()){
+                    System.out.println(key + ": " + job.get(key));
+                }
+
+            }
+
+            System.out.println(border);
+
+        }
+//        System.out.println("printJobs is not implemented yet");
+    }
+    private static void debugMethod (String columnChoices) {
+        System.out.println("Debug: " + columnChoices);
     }
 }

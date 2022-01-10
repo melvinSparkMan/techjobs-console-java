@@ -103,6 +103,7 @@ public class JobData {
             Integer numberOfColumns = records.get(0).size();
             String[] headers = parser.getHeaderMap().keySet().toArray(new String[numberOfColumns]);
 
+
             allJobs = new ArrayList<>();
 
             // Put the records into a more friendly format
@@ -123,6 +124,7 @@ public class JobData {
             System.out.println("Failed to load job data");
             e.printStackTrace();
         }
+        System.out.println("Number of Records: " + allJobs.size() + "\n" + allJobs.get(5));
     }
 
 }
