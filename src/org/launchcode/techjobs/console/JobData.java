@@ -65,16 +65,34 @@ public class JobData {
      * @param value Value of teh field to search for
      * @return List of all jobs matching the criteria
      */
+
+    public static ArrayList<HashMap<String, String>> findByValue(String column, String value) {
+        ArrayList<HashMap<String, String>> jobs = new ArrayList<>();
+        for (HashMap<String, String> col : allJobs) {
+            String aColumn = col.get(value);
+            if (aColumn.contains(value)) {
+                jobs.add(col);
+            }
+        }
+        return jobs;
+    }
+
+
     public static ArrayList<HashMap<String, String>> findByColumnAndValue(String column, String value) {
 
         // load data, if not already loaded
         loadData();
 
+
+
         ArrayList<HashMap<String, String>> jobs = new ArrayList<>();
+
+
 
         for (HashMap<String, String> row : allJobs) {
 
             String aValue = row.get(column);
+            System.out.println(column + "  " + aValue + " " + row);
 
             if (aValue.contains(value)) {
                 jobs.add(row);
@@ -124,7 +142,7 @@ public class JobData {
             System.out.println("Failed to load job data");
             e.printStackTrace();
         }
-        System.out.println("Number of Records: " + allJobs.size() + "\n" + allJobs.get(5));
+//        System.out.println("Number of Records: " + allJobs.size() + "\n" + allJobs.get(5));
     }
 
 }
