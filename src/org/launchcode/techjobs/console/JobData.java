@@ -69,7 +69,8 @@ public class JobData {
     public static ArrayList<HashMap<String, String>> findByValue(String column, String value) {
         ArrayList<HashMap<String, String>> jobs = new ArrayList<>();
         for (HashMap<String, String> col : allJobs) {
-            String aColumn = col.get(value);
+            String aColumn = col.get(column);
+            System.out.println("Line 73: " + col + aColumn + value );
             if (aColumn.contains(value)) {
                 jobs.add(col);
             }
@@ -92,7 +93,7 @@ public class JobData {
         for (HashMap<String, String> row : allJobs) {
 
             String aValue = row.get(column);
-            System.out.println(column + "  " + aValue + " " + row);
+//            System.out.println("Line 95: " + column + "  " + aValue + " " + row);
 
             if (aValue.contains(value)) {
                 jobs.add(row);
