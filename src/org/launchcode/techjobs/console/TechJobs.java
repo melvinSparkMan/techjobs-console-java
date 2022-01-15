@@ -18,6 +18,7 @@ public class TechJobs {
         columnChoices.put("Core Competency", "Skill");
         columnChoices.put("Employer", "Employer");
         columnChoices.put("Location", "Location");
+        columnChoices.put("Name", "Name");
         columnChoices.put("Position Type", "Position Type");
         columnChoices.put("all", "All");
 
@@ -70,12 +71,12 @@ public class TechJobs {
                 String searchTerm = in.nextLine();
 
                 if (searchField.equals("all")) {
-
-                    System.out.println("Search all fields not yet implemented.");
+                    printJobs(JobData.findByValue(searchTerm));
+//                    System.out.println("Search all fields not yet implemented.");
                 } else {
                     System.out.println(searchField + "  " + searchTerm);
                     printJobs(JobData.findByColumnAndValue(searchField, searchTerm));
-                    printJobs(JobData.findByValue(searchField, searchTerm));
+
                 }
             }
         }
